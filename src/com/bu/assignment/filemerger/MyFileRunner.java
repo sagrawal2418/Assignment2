@@ -38,7 +38,7 @@ public class MyFileRunner {
      * @param fileName Passed filename from the main method to read the file
      * @throws IOException This method will read the content of the passed filename and write the content to a new file
      */
-    public static void readAndWriteToNewFile(String fileName) throws IOException {
+    private static void readAndWriteToNewFile(String fileName) throws IOException {
         BufferedReader bufferedReader = null; //declare bufferedReader instance
         BufferedWriter bufferedWriter = null; //declare bufferedWriter instance
 
@@ -72,7 +72,7 @@ public class MyFileRunner {
      * @return Does not return anything
      * This method reads the merged file and searches for the keywords in each line
      */
-    public static void searchKeywordsInFile() {
+    private static void searchKeywordsInFile() {
         BufferedReader bufferedReader = null; //create bufferedReader instance
 
         try {
