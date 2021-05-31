@@ -41,6 +41,7 @@ public class MyFileRunner {
             searchKeyword.add(keyword); //add the keyword to the list
         }
 
+        scanner.close(); //close the scanner
         System.out.println("Number of keywords: " + searchKeyword.size()); //print the number of keywords to be searched
         //iterate through the list of keywords
         for (String s : searchKeyword) {
