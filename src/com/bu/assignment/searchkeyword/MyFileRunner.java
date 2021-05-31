@@ -32,37 +32,42 @@ public class MyFileRunner {
         final List<MyModel> myModels = new ArrayList<>(); //create arraylist object of MyModel type
         List<String> searchKeyword = new ArrayList<>(); //create list of search keyword
         Scanner scanner = new Scanner(System.in); //create scanner object
-        System.out.println("Please enter the number of keywords you want to search"); //prompt the user to enter the number of keyword to search
-        int n = scanner.nextInt(); //get user input for number of keywords
-
-        for (int i = 0; i < n; i++) { //iterate through the number of keywords
-            System.out.println("Please enter your search keyword: "); //prompt the user after each entry to enter the next entry
-            String keyword = scanner.next(); //get the keyword from user
-            searchKeyword.add(keyword); //add the keyword to the list
-        }
-
-        scanner.close(); //close the scanner
-        System.out.println("Number of keywords: " + searchKeyword.size()); //print the number of keywords to be searched
-        //iterate through the list of keywords
-        for (String s : searchKeyword) {
-            //print the current time when keyword was searched and the search term
-            System.out.println("Time: " + getCurrentTimeStamp() + " search term: " + s);
-            if (myModels.size() > 0) { //check to see if the arraylist has contents
-                int index = getIndex(s, myModels); //get the index of the arraylist where the keyword exists
-                if (index >= 0) { //check if index is greater then 0 which means keyword exists
-                    MyModel model = myModels.get(index); //using the index get the model object
-                    model.setCount(1); //increment the count of the model which means keyword exist and increase the frequency
-                } else {
-                    createMyModelObject(s, myModels); //if keyword does not exist we need to add the new entry to the list
-                }
-
-            } else {
-                createMyModelObject(s, myModels); //if list is empty we need to add new entry to the list
+        System.out.println("Please enter the number of keywords you want to search and hit enter: "); //prompt the user to enter the number of keyword to search
+        try {
+            int n = scanner.nextInt(); //get user input for number of keywords
+            for (int i = 0; i < n; i++) { //iterate through the number of keywords
+                System.out.println("Please enter your search keyword and hit enter after each keyword: "); //prompt the user after each entry to enter the next entry
+                String keyword = scanner.next(); //get the keyword from user
+                searchKeyword.add(keyword); //add the keyword to the list
             }
-        }
 
-        for (MyModel model : myModels) { //iterate through the list of MyModel
-            System.out.println("Search term: " + model.getQuery() + " Frequency: " + model.getCount()); //print the search term and frequency
+            System.out.println("Number of keywords: " + searchKeyword.size()); //print the number of keywords to be searched
+            //iterate through the list of keywords
+            for (String s : searchKeyword) {
+                //print the current time when keyword was searched and the search term
+                System.out.println("Time: " + getCurrentTimeStamp() + " search term: " + s);
+                if (myModels.size() > 0) { //check to see if the arraylist has contents
+                    int index = getIndex(s, myModels); //get the index of the arraylist where the keyword exists
+                    if (index >= 0) { //check if index is greater then 0 which means keyword exists
+                        MyModel model = myModels.get(index); //using the index get the model object
+                        model.setCount(1); //increment the count of the model which means keyword exist and increase the frequency
+                    } else {
+                        createMyModelObject(s, myModels); //if keyword does not exist we need to add the new entry to the list
+                    }
+                } else {
+                    createMyModelObject(s, myModels); //if list is empty we need to add new entry to the list
+                }
+            }
+
+            for (MyModel model : myModels) { //iterate through the list of MyModel
+                System.out.println("Search term: " + model.getQuery() + " Frequency: " + model.getCount()); //print the search term and frequency
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Something went wrong with the input, please enter proper input value");
+        } catch (Exception e) {
+            System.out.println("Something went wrong, please try again");
+        } finally {
+            scanner.close(); //close the scanner
         }
     }
 
@@ -102,5 +107,4 @@ public class MyFileRunner {
         }
         return -1; //default value if list does not contain the keyword
     }
-
 }

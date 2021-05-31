@@ -8,6 +8,7 @@ Developed by Sandeep Agrawal
 Technology used - Java
 
 Classes - MyFileRunner.java
+          MyModel.java  
 
 Methods 
 * main() - This method is the starting point of program execution, this method will call the searchForKeyword() method.  
@@ -24,11 +25,12 @@ Methods
 3. Removed all the code related to the file reading from Assignment 2 since we do not need to do anything with the content. 
 4. Removed the json parsing library from Assignment 2. 
 5. Calling the searchForKeyword method directly inside main method to start the program. 
+6. Handled the input mismatch exception and any other exception using try/catch and close the scanner in the finally block.    
 6. Program execution flow:
   * Program start with main method 
   * searchForKeyword() method is executed. 
-  * User will be prompted to enter the number of keywords - User need to enter integer value
-  * User will be prompted to enter each keyword - User need to enter proper string value
+  * User will be prompted to enter the number of keywords - User need to enter integer value for proper program execution
+  * User will be prompted to enter each keyword
   * System prints the total number of keywords
   * Program searches each keyword inside the list
   * During first time execution the item is added to the list 
