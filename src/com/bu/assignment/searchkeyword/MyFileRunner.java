@@ -1,6 +1,5 @@
-package com.bu.assignment.filemerger;
+package com.bu.assignment.searchkeyword;
 
-import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 

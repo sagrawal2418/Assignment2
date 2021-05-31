@@ -1,4 +1,4 @@
-package com.bu.assignment.filemerger;
+package com.bu.assignment.searchkeyword;
 
 public class MyModel {
 
